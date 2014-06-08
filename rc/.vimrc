@@ -75,8 +75,6 @@ augroup vimrcEx
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass 
 
-  autocmd BufRead *.hbt setfiletype html
-
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
 
