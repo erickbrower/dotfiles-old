@@ -18,7 +18,7 @@ namespace :vim do
   target_rc = "#{$prefix}/.vimrc"
   source_rc = "#{$source}/rc/vimrc"
   target_bundle = "#{$prefix}/.vim"
-  source_bundle = "#{$source}/vim/*"
+  source_bundle = "#{$source}/vim/"
 
   desc 'Configures vim with custom rc and bundles'
   task install: [target_bundle, target_rc]
