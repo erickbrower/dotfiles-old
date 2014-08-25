@@ -5,9 +5,6 @@ task default: ['vim:install', 'zsh:install', 'tmux:install']
 $prefix = ENV['HOME'] || '~'
 $source = File.expand_path File.dirname(__FILE__)
 
-target_zshrc = "#{$prefix}/.zshrc"
-source_zshrc = "#{$source}/rc/zshrc"
-
 def cp_overwrite(source, target)
   rm target if File.exist? target
   cp source, target
@@ -18,7 +15,7 @@ namespace :vim do
   target_rc = "#{$prefix}/.vimrc"
   source_rc = "#{$source}/rc/vimrc"
   target_bundle = "#{$prefix}/.vim"
-  source_bundle = "#{$source}/vim/*"
+  source_bundle = "#{$source}/vim"
 
   desc 'Configures vim with custom rc and bundles'
   task install: [target_bundle, target_rc]
