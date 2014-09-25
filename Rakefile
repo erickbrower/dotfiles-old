@@ -6,23 +6,16 @@ task default: ['vim:init', 'vim:configure']
 $prefix = ENV['HOME'] || '~'
 $source = File.expand_path File.dirname(__FILE__)
 
-def cp_overwrite(source, target)
-  rm target if File.exist? target
-  cp source, target
-end
-
 namespace :vim do
-
-  target_rc = "#{$prefix}/.vimrc"
-  source_rc = "#{$source}/rc/vimrc"
-  target_bundle = "#{$prefix}/.vim"
-  source_bundle = "#{$source}/vim/"
-
   desc 'Initializes/updates vim bundle plugins'
   task :init do
     cmds = ['git submodule init', 'git submodule update']
     cmds.each { |cmd| sh cmd }
   end
+
+  target_rc = File.join($prefix, '.vimrc')
+  source_rc = File.join($source, 'rc', 'vimrc')
+  target_bundle = File.join($prefix, '.vim')
 
   desc 'Configures vim with custom rc and bundles'
   task configure: [target_bundle, target_rc]
@@ -32,9 +25,17 @@ namespace :vim do
     cp source_rc, target_rc
   end
 
-  rule target_bundle => FileList[source_bundle] do
-    cp_r source_bundle, target_bundle, remove_destination: true
+  rule target_bundle => FileList["#{$source}/vim/**/*"] do |t|
+    vim_path = File.join($prefix, '.vim') 
+    Dir.mkdir(vim_path) unless Dir.exists?(vim_path)
+    rm_r(target_bundle, force: true)
+    cp_r("#{$source}/vim/.", target_bundle, remove_destination: true)
   end
+end
+
+def cp_overwrite(source, target)
+  rm target if File.exist? target
+  cp source, target
 end
 
 namespace :tmux do

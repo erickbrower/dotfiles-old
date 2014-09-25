@@ -68,7 +68,6 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 
-  "for ruby, autoindent with two spaces, always expand tabs
   autocmd FileType ruby,haml,eruby,yaml,html,sass,javascript,cucumber set ai sw=2 sts=2 et
   autocmd FileType javascript setlocal equalprg=js-beautify\ -s\ 2\ -f\ -
   autocmd FileType python set sw=4 sts=4 et
@@ -88,7 +87,38 @@ augroup vimrcEx
   " to run commands there.
   autocmd! CmdwinEnter * :unmap <cr>
   autocmd! CmdwinLeave * :call MapCR()
+
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " golang
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  
+  " Show a list of interfaces which is implemented by the type under your cursor
+  au FileType go nmap <Leader>s <Plug>(go-implements)
+
+  " Show type info for the word under your cursor 
+  au FileType go nmap <Leader>i <Plug>(go-info)
+
+  " Open the relevant Godoc for the word under the cursor
+  au FileType go nmap <Leader>gd <Plug>(go-doc)
+
+  " open it vertically
+  au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
+  " in the browser
+  au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+
+  au FileType go nmap <leader>r <Plug>(go-run)
+  au FileType go nmap <leader>b <Plug>(go-build)
+  au FileType go nmap <leader>t <Plug>(go-test)
+  au FileType go nmap <leader>c <Plug>(go-coverage)
+
+  au FileType go nmap <Leader>ds <Plug>(go-def-split)
+  au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+  au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+  au FileType go nmap gd <Plug>(go-def)
 augroup END
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
