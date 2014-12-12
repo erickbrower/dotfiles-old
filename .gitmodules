@@ -43,3 +43,6 @@
 [submodule "vim/bundle/mru"]
 	path = vim/bundle/mru
 	url = git@github.com:yegappan/mru.git
+[submodule "vim/bundle/django"]
+	path = vim/bundle/django
+	url = https://github.com/vim-scripts/django.vim.git

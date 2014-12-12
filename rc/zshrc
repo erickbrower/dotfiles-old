@@ -42,6 +42,9 @@ source /usr/local/share/chruby/auto.sh
 
 alias be="bundle exec"
 
+alias ackr="ack --type=ruby"
+alias ackj="ack --type=js"
+
 if [ -f ~/.private ]
 then
   source ~/.private
