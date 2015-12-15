@@ -68,7 +68,7 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 
-  autocmd FileType ruby,haml,eruby,yaml,html,sass,javascript,cucumber set ai sw=2 sts=2 et
+  autocmd FileType ruby,haml,eruby,yaml,html,sass,javascript,cucumber,coffee,jade set ai sw=2 sts=2 et
   autocmd FileType javascript setlocal equalprg=js-beautify\ -s\ 2\ -f\ -
   autocmd FileType python set sw=4 sts=4 et
 
