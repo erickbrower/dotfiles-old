@@ -119,6 +119,8 @@ augroup vimrcEx
   au FileType go nmap gd <Plug>(go-def)
 augroup END
 
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
